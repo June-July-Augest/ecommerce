@@ -1,0 +1,9 @@
+
+<h1>hello</h1>
+
+@for(product of products; track product.id){
+    <div>
+        {{product.name}}
+        <button (click)="goToProductDetail(product.id)">View Details</button>
+    </div>
+}
