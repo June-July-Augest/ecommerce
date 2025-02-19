@@ -1,1 +1,25 @@
-<p>userinfo works!</p>
+<div class="user-info">
+
+  <div class="profile">
+    <div class="info-cards">
+      <h2>Welcome back, {{ profileInfo.firstName }}</h2>
+      <div class="personal-info">
+        <app-info-card />
+      </div>
+      <div class="shipping-payment">
+        <app-info-card />
+        <app-info-card />
+      </div>
+    </div>
+  </div>
+
+  <div class="order-history">
+    <h2>Order History</h2>
+    <div class="ordereditems">
+      @for (order of orderHistory; track order.id) {
+      <app-order-card />
+      }
+    </div>
+  </div>
+
+</div>

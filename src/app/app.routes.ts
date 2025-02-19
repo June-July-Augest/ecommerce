@@ -7,7 +7,7 @@ import { UserinfoComponent } from './pages/userinfo/userinfo.component';
 import { ProductDetailComponent } from './pages/products/product-detail/product-detail.component';
 
 export const routes: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', component: UserinfoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'checkout', component: CheckoutComponent },
