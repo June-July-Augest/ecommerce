@@ -41,7 +41,7 @@ export class InfoCardComponent implements OnChanges {
     this.form.get('firstLine')?.setValue(this.firstDisplay())
     this.form.get('secondLine')?.setValue(this.secondDisplay())
     this.form.get('thirdLine')?.setValue(this.thirdDisplay())
-    this.form.get('forthLine')?.setValue(this.firstDisplay())
+    this.form.get('forthLine')?.setValue(this.forthDisplay())
   }
 
   toggleEditing() {
