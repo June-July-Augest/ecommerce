@@ -23,6 +23,14 @@ export class UserinfoComponent {
   paymentMethod: PaymentMethod = DUMMY_DATA.paymentMethod;
   orderHistory: Order[] = DUMMY_DATA.orderHistory;
 
+  paymentmethodData = {
+    first: this.paymentMethod.cardNumber,
+    second: this.paymentMethod.exp,
+    third: this.paymentMethod.billingAddress,
+    forth: this.paymentMethod.secCode,
+  }
+
+
 
   onSelectImage(link: string) {
     // upload this image to data base generate url and pass it to info-card!!

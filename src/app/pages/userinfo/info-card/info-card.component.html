@@ -1,4 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  
   @if(isProfile()) {
   <img [src]="image()" alt="head" (click)="triggerFileInput()" #img />
   }
@@ -10,6 +12,8 @@
     (change)="onImageUpload($event)"
     #imageUploadInput
   />
+
+
   <div class="title">
     <p>{{ title() }}</p>
     @if(!isProfile()){ @if(!isEditing){
