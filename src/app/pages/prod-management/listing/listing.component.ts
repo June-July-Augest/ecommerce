@@ -17,6 +17,6 @@ export class ListingComponent {
   }
 
   prodClick() {
-    this.router.navigate(["/listing/productDetail"])
+    this.router.navigate(["seller/listing/productDetail"])
   }
 }

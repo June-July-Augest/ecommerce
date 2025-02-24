@@ -1,0 +1,16 @@
+<div class="material-scope">
+    <mat-card>
+      <mat-card-title>{{ title }}</mat-card-title>
+      <mat-card-content>
+        <ng-content></ng-content> 
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onAction()">
+          {{ buttonLabel }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+
+  

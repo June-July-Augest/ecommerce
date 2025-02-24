@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, ChartConfiguration, ChartData, ChartOptions, ChartType, registerables } from 'chart.js';
+import { Chart, ChartData, ChartOptions, ChartType, registerables } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 
 Chart.register(...registerables);

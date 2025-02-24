@@ -5,7 +5,8 @@
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
-    margin: 10px;
+    width: 90%; 
+    margin: 0 auto;
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -29,7 +30,7 @@
   
   
     .product-info {
-        flex: 0 0 40%; /* Right section takes 40% */
+        flex: 0 0 45%; /* Right section takes 40% */
         max-width: 40%;
         
         .name-price {
@@ -105,6 +106,8 @@
             width: 100%;
             border: none;
             padding: 10px 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
             font-size: 1em;
             cursor: pointer;
         }
