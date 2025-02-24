@@ -1,30 +1,38 @@
 export interface ProfileInfo {
-    firstName:string,
-    lastName: string,
-    email: string,
-    profileImage:string
+    firstName:string | null,
+    lastName: string | null,
+    email: string | null,
+    phone: string | null,
+    profileImage?:string | null
 }
 
 export interface ShippingAddress {
-    street: string,
-    apt: string,
-    city: string,
-    state: string,
-    zipcode: string,
+    street: string | null,
+    city: string | null,
+    state: string | null,
+    zipcode: string | null,
 }
 
 export interface PaymentMethod{
-    cardNumber: string,
-    exp: string,
-    billingAddress:string,
-    secCode: string
+    cardNumber: string | null,
+    exp: string | null,
+    billingAddress:string | null,
+    secCode: string | null
 }
 
 export interface Order {
-    description:string,
-    orderDate: string,
-    shippingAddress:string,
-    trackingNumber:string,
-    productImage: string,
-    id: string
+    description:string | null,
+    orderDate: string | null,
+    shippingAddress:string | null,
+    trackingNumber:string | null,
+    productImage: string | null,
+    id: string | null,
+    title: string | null
+}
+
+export interface CardFormData{
+    firstData: string | null,
+    secondData: string | null,
+    thirdData: string | null,
+    forthData: string | null,
 }

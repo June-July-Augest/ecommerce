@@ -1,25 +1,56 @@
-<div class="user-info">
-
+<div class="userinfo">
+  <h2>Welcome back, {{ profileInfo.firstName }}</h2>
   <div class="profile">
-    <div class="info-cards">
-      <h2>Welcome back, {{ profileInfo.firstName }}</h2>
-      <div class="personal-info">
-        <app-info-card />
-      </div>
-      <div class="shipping-payment">
-        <app-info-card />
-        <app-info-card />
-      </div>
+    <div class="personal-info">
+      <app-info-card
+        [isProfile]="true"
+        title="My Profile"
+        [image]="profileInfo.profileImage"
+        [firstDisplay]="profileInfo.firstName"
+        [secondDisplay]="profileInfo.lastName"
+        [thirdDisplay]="profileInfo.email"
+        [forthDisplay]="profileInfo.phone"
+        (formData)="onSubmitProfile($event)"
+        (imageUrl)="onSelectImage($event)"
+      />
+    </div>
+
+    <div class="shipping-payment">
+      <app-info-card
+        [isProfile]="false"
+        title="Shipping Address"
+        [image]="''"
+        [firstDisplay]="shippingAddress.street"
+        [secondDisplay]="shippingAddress.city"
+        [thirdDisplay]="shippingAddress.state"
+        [forthDisplay]="shippingAddress.zipcode"
+        (formData)="onSubmitAddress($event)"
+      />
+      <app-info-card
+        [isProfile]="false"
+        title="Payment Method"
+        [image]="''"
+        [firstDisplay]="paymentMethod.cardNumber"
+        [secondDisplay]="paymentMethod.exp"
+        [thirdDisplay]="paymentMethod.billingAddress!.slice(0, 25) + '...'"
+        [forthDisplay]="paymentMethod.secCode"
+        (formData)="onSubmitPayment($event)"
+      />
     </div>
   </div>
 
-  <div class="order-history">
-    <h2>Order History</h2>
-    <div class="ordereditems">
-      @for (order of orderHistory; track order.id) {
-      <app-order-card />
-      }
-    </div>
+  <h2>Order History</h2>
+  <div class="ordered-items">
+    @for (order of orderHistory; track order.id) {
+    <app-order-card
+      [title]="order.title"
+      [image]="order.productImage"
+      [firstDisplay]="order.description"
+      [secondDisplay]="order.orderDate" 
+      [thirdDisplay]="order.shippingAddress" 
+      [forthDisplay]="order.trackingNumber"
+      [orderId]="order.id"
+    />
+    }
   </div>
-
 </div>
