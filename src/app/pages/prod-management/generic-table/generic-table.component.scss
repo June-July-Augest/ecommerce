@@ -1,0 +1,57 @@
+:host {
+    display: block;
+    width: 100%;
+    overflow-x: auto; // Enables horizontal scrolling if needed
+}
+
+table {
+    width: 100%; // Table takes full width
+    border-collapse: collapse; // Removes gaps between borders
+    table-layout: auto; // Columns adjust based on content
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Subtle shadow for better UI
+    background-color: #fff; // White background for better contrast
+    font-family: Arial, sans-serif;
+    overflow-x: auto;
+
+    thead {
+        background-color: #f4f4f9; // Light gray background for the header
+        text-align: center;
+    }
+
+    th {
+        padding: 12px 15px;
+        font-weight: bold;
+        text-transform: uppercase; // Makes header text uppercase
+        font-size: 14px;
+        color: #333; // Dark text color for better contrast
+        white-space: nowrap; // Keeps header text on one line
+        border-bottom: 2px solid #ddd;
+        cursor: pointer;
+    }
+
+    tbody {
+
+        tr {
+            border-bottom: 1px solid #ddd; // Light border between rows
+            transition: background-color 0.2s ease-in-out;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(126, 71, 221, 0.15); // Subtle striping for better readability
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; // Highlight row on hover
+        }
+
+        td {
+            padding: 10px 15px;
+            color: #555;
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+    }
+}

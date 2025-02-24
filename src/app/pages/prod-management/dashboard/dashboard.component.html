@@ -1,0 +1,16 @@
+<app-nav-bar-seller [navUserName]="myUserName" ></app-nav-bar-seller>
+
+<div class="container">
+    <div id="summary-line"> Your summary, {{ myUserName }} </div>
+    
+    <div class="info-block" *ngFor="let item of dummyData">
+        <app-dashboard-info-block [title]="item['title']" [value]="item['value']" [description]="item['description']"></app-dashboard-info-block>
+    </div>
+    
+    <div class="dashboard-chart">
+        <app-prod-chart></app-prod-chart>
+    </div>
+    
+</div>
+
+

@@ -1,0 +1,30 @@
+.inventory-container {
+    display: flex;
+    justify-content: center; /* Centers items horizontally in the container */
+    align-items: center; /* Centers items vertically in the container */
+    flex-wrap: wrap;
+
+    .action-block {
+        gap: 20px;
+        display: flex;
+        font-size: large;
+        width: auto;
+        margin: 5px;
+        margin-top: 0; 
+        padding: 10px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
+        } 
+    }
+
+    .inventory-table {
+        width: 100%;              /* Takes full width of the page */
+        // max-width: 1200px;        /* Max width for better readability on large screens */
+        margin: 0 auto;           /* Centers the table */
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    }
+
+}

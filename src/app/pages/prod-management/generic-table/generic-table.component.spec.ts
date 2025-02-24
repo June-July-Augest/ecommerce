@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserinfoComponent } from './userinfo.component';
+import { GenericTableComponent } from './generic-table.component';
 
-describe('UserinfoComponent', () => {
-  let component: UserinfoComponent;
-  let fixture: ComponentFixture<UserinfoComponent>;
+describe('GenericTableComponent', () => {
+  let component: GenericTableComponent;
+  let fixture: ComponentFixture<GenericTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserinfoComponent]
+      imports: [GenericTableComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserinfoComponent);
+    fixture = TestBed.createComponent(GenericTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

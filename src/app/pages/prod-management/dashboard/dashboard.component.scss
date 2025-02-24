@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center; /* Centers items horizontally in the container */
+    align-items: center; /* Centers items vertically in the container */
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    
+    #summary-line {
+        margin: 10px; /* Adds space below the summary text */
+        margin-left: 30px;
+        width: 100%;
+        font-weight: bold;
+        font-size: larger;
+    }
+
+    .info-block {
+        // display: block;
+        flex: 1 1 20%;
+        font-size: large;
+        width: auto;
+        margin: 5px;
+        margin-top: 0; 
+        padding: 10px;
+ 
+    }
+
+    .dashboard-chart {
+        flex: 1 1 100%;  /* Makes the chart take the full width */
+        width: 100%;  /* Ensures it fills the entire row */
+        box-sizing: border-box;
+        margin-top: 20px;
+        padding: 20px;
+    }
+    
+    @media (max-width: 768px) {
+        .info-block, .dashboard-chart {
+            flex: 1 1 100%; /* Stacks the child components vertically on smaller screens */
+        }
+    } 
+}
+
+
+  

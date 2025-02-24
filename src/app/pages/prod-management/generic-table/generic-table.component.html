@@ -1,0 +1,17 @@
+<table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers" (click)="sortData(header)">{{ header }} 
+            <span class="sort-icon" *ngIf="sortColumn === header">
+                {{ sortDirection === 'asc' ? '▲' : '▼' }}
+            </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td *ngFor="let key of objectKeys(row)">{{ row[key] }}</td>
+      </tr>
+    </tbody>
+</table>
+  

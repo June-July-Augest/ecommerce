@@ -1,0 +1,14 @@
+<app-nav-bar-seller [navUserName]="myUserName" ></app-nav-bar-seller>
+
+<div class="inventory-container">
+    <div class="action-block">
+        <app-inventory-action-block iconPath="images/laundry.png" buttonText="Add Item"></app-inventory-action-block>
+        <app-inventory-action-block iconPath="images/brand.png" buttonText="Add Item Group"></app-inventory-action-block>
+        <app-inventory-action-block iconPath="images/barcode-scanner.png" buttonText="Add Barcode"></app-inventory-action-block>
+    </div>
+
+    <div class="inventory-table">
+        <app-generic-table [headers]="inventoryHeader" [data]="sortedInventoryData" (sortedDataChange)="onSortedDataChange($event)"></app-generic-table>
+    </div>
+
+</div>
