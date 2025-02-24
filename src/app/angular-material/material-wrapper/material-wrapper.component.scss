@@ -1,0 +1,39 @@
+:host {
+  display: contents;
+}
+
+.material-scope {
+  width: 100%;
+  display: block;
+  
+  mat-card {
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    margin: 20px 0;
+    padding: 20px;
+  }
+
+  mat-card-title {
+    font-size: 1.5rem;
+    color: #9c27b0;   // Magenta for Titles
+  }
+
+  mat-card-content {
+    font-size: 1rem;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  button[mat-raised-button] {
+    color: white;
+    background-color: #8e24aa;   // Magenta Violet Primary
+    &:hover {
+      background-color: #6a1b9a;  // Darker Magenta Violet
+    }
+  }
+}

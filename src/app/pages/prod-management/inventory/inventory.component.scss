@@ -3,10 +3,13 @@
     justify-content: center; /* Centers items horizontally in the container */
     align-items: center; /* Centers items vertically in the container */
     flex-wrap: wrap;
+    max-width: 100%;
 
     .action-block {
-        gap: 20px;
+        // gap: 20px;
         display: flex;
+        flex: 1 1 30%;
+        justify-content: space-evenly;
         font-size: large;
         width: auto;
         margin: 5px;
@@ -21,7 +24,6 @@
 
     .inventory-table {
         width: 100%;              /* Takes full width of the page */
-        // max-width: 1200px;        /* Max width for better readability on large screens */
         margin: 0 auto;           /* Centers the table */
         padding: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 

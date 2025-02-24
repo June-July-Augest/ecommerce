@@ -1,8 +1,9 @@
 .container {
     display: flex;
-    justify-content: center; /* Centers items horizontally in the container */
+    justify-content: center;    
     align-items: center; /* Centers items vertically in the container */
     flex-wrap: wrap; /* Allows items to wrap to the next line */
+    max-width: 100%;
     
     #summary-line {
         margin: 10px; /* Adds space below the summary text */
@@ -37,6 +38,3 @@
         }
     } 
 }
-
-
-  
