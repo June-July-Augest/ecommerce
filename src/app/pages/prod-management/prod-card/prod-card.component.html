@@ -1,0 +1,18 @@
+<div class="product-card" (click)="optionsVisible = false">
+  <div class="product-image">
+    <img src="{{ productImage }}" />
+    <div class="product-options">
+      <button class="options-button" (click)="toggleOptionsMenu($event)">⋮</button>
+      <ul class="options-menu" [ngClass]="{'show': optionsVisible}">
+        <li (click)="editProduct()">Edit</li>
+        <li (click)="createOrder()">Create Order</li>
+        <li (click)="removeProduct()">Remove</li>
+      </ul>
+    </div>
+  </div>
+  <div class="product-details">
+    <h3>{{ productName }}</h3>
+    <p>{{ productDescription }}</p>
+  </div>
+</div>
+  
