@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <div class="logo"> FashionWise </div>
+    <button class="hamburger-button" (click)="toggleMenu()">☰</button>
+    <span class="spacer"></span>
+    <div class="nav-links" [class.active]="menuOpen">
+        <button class="nav-button" mat-button routerLink="/seller/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Dashboard</button>
+        <button class="nav-button" mat-button routerLink="/seller/listing" routerLinkActive="active-link">Listing</button>
+        <button class="nav-button" mat-button routerLink="/seller/inventory" routerLinkActive="active-link">Inventory</button>
+        <button class="nav-button" mat-button routerLink="/seller/orders" routerLinkActive="active-link">Orders</button>
+        <button class="nav-button" mat-button>Hello, {{ navUserName }} </button>
+        <mat-icon>person</mat-icon>  <!-- person icon -->
+    </div>
+</mat-toolbar>
+  

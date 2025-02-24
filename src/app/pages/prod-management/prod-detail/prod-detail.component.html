@@ -1,0 +1,52 @@
+<app-nav-bar-seller></app-nav-bar-seller>
+
+<div class="product-detail-container">
+    <div class="product-image">
+        <img src="images/tshirt.jpeg" alt="{{ product['name'] }}" />
+    </div>
+  
+    <div class="product-info">
+        <div class="name-price">
+            <h1 class="product-name">{{ product["name"] }}</h1>
+            <span class="product-price">{{ product["price"] }}</span>
+        </div>
+
+        <div class="review-section">
+            <span class="stars"> ★★★★☆ </span>
+            <span class="review-count">(120 reviews)</span>
+        </div>
+      
+        <div class="product-colors">
+            <label>Color:</label>
+            <div class="color-options">
+                <span 
+                    *ngFor="let color of product['colors']" 
+                    [style.backgroundColor]="color"
+                    class="color-dot"
+                    [class.selected]="color === product['selectedColor']"
+                    (click)="product['selectedColor'] = color">
+                </span>
+            </div>
+        </div>
+    
+        <div class="product-sizes">
+            <label>Size:</label>
+            <select class="size-options" [(ngModel)]="product['selectedSize']">
+                <option *ngFor="let size of product['sizes']" [value]="size">{{ size }}</option>
+            </select>
+        </div>
+    
+        <button class="add-to-cart" *ngIf="!isSeller">Add to Cart</button>
+    
+        <!-- Seller-only Actions -->
+        <div class="seller-actions" *ngIf="isSeller">
+            <button (click)="editProduct()">Edit Product</button>
+            <button (click)="deleteProduct()">Delete Product</button>
+        </div>
+    
+        <div class="product-description">
+            <p>{{ product['description'] }}</p>
+        </div>
+    </div>
+</div>
+  
