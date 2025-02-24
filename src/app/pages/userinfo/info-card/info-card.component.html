@@ -1,0 +1,60 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  @if(isProfile()) {
+  <img [src]="image()" alt="head" (click)="triggerFileInput()" #img />
+  }
+  <input
+    type="file"
+    accept="image/*"
+    #fileInput
+    style="display: none"
+    (change)="onImageUpload($event)"
+    #imageUploadInput
+  />
+  <div class="title">
+    <p>{{ title() }}</p>
+    @if(!isProfile()){ @if(!isEditing){
+    <button type="button" (click)="toggleEditing()">Edit</button>
+    }@else {
+    <div class="two-button">
+      <button type="submit" class="confirm">Submit</button>
+      <button type="button" class="cancel" (click)="onCancle()">Cancel</button>
+    </div>
+    } }
+  </div>
+  <div class="form-rows">
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
+      formControlName="firstLine"
+    />
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
+      formControlName="secondLine"
+    />
+  </div>
+  <div class="form-rows">
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
+      formControlName="thirdLine"
+    />
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
+      formControlName="forthLine"
+    />
+  </div>
+  @if(isProfile()){ @if(!isEditing){
+  <button type="button" class="big-button" (click)="toggleEditing()">
+    Edit
+  </button>
+  } @else {
+  <div class="two-button center">
+    <button type="submit" class="big-button confirm">Submit</button>
+    <button type="button" class="big-button cancel" (click)="onCancle()">
+      Cancel
+    </button>
+  </div>
+  } }
+</form>
