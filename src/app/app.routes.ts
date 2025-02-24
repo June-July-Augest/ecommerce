@@ -9,6 +9,7 @@ import { ListingComponent } from './pages/prod-management/listing/listing.compon
 import { InventoryComponent } from './pages/prod-management/inventory/inventory.component';
 import { OrdersComponent } from './pages/prod-management/orders/orders.component';
 import { ProdDetailComponent } from './pages/prod-management/prod-detail/prod-detail.component';
+import { CategoryComponent } from './components/category/category.component';
 
 export const routes: Routes = [
   { path: '', component: MainComponent },
@@ -20,8 +21,8 @@ export const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'listing/productDetail', component: ProdDetailComponent },
   { path: 'userinfo', component: UserinfoComponent },
-  { path: 'product/:id', component: ProductDetailComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: ':category', component: CategoryComponent },
+  /* { path: '**', redirectTo: '', pathMatch: 'full' }, */
 ];
 
 export default routes;
