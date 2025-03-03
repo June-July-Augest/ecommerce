@@ -1,0 +1,57 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="cardName">Cardholder Name</label>
+      <input 
+        type="text" 
+        id="cardName" 
+        formControlName="cardName" 
+        class="form-control">
+      <div *ngIf="paymentForm.get('cardName')?.invalid && (paymentForm.get('cardName')?.dirty || paymentForm.get('cardName')?.touched)" class="error">
+        <div *ngIf="paymentForm.get('cardName')?.errors?.['required']">Cardholder Name is required.</div>
+        <div *ngIf="paymentForm.get('cardName')?.errors?.['minlength']">Cardholder Name must be at least 3 characters long.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cardNumber">Card Number</label>
+      <input 
+        type="text" 
+        id="cardNumber" 
+        formControlName="cardNumber" 
+        class="form-control">
+      <div *ngIf="paymentForm.get('cardNumber')?.invalid && (paymentForm.get('cardNumber')?.dirty || paymentForm.get('cardNumber')?.touched)" class="error">
+        <div *ngIf="paymentForm.get('cardNumber')?.errors?.['required']">Card Number is required.</div>
+        <div *ngIf="paymentForm.get('cardNumber')?.errors?.['pattern']">Card Number is invalid.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="expiryDate">Expiry Date</label>
+      <input 
+        type="text" 
+        id="expiryDate" 
+        formControlName="expiryDate" 
+        class="form-control">
+      <div *ngIf="paymentForm.get('expiryDate')?.invalid && (paymentForm.get('expiryDate')?.dirty || paymentForm.get('expiryDate')?.touched)" class="error">
+        <div *ngIf="paymentForm.get('expiryDate')?.errors?.['required']">Expiry Date is required.</div>
+        <div *ngIf="paymentForm.get('expiryDate')?.errors?.['pattern']">Expiry Date is invalid.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cvv">CVV</label>
+      <input 
+        type="text" 
+        id="cvv" 
+        formControlName="cvv" 
+        class="form-control">
+      <div *ngIf="paymentForm.get('cvv')?.invalid && (paymentForm.get('cvv')?.dirty || paymentForm.get('cvv')?.touched)" class="error">
+        <div *ngIf="paymentForm.get('cvv')?.errors?.['required']">CVV is required.</div>
+        <div *ngIf="paymentForm.get('cvv')?.errors?.['pattern']">CVV is invalid.</div>
+      </div>
+    </div>
+    <button 
+      type="submit" 
+      class="btn btn-primary" 
+      [disabled]="!paymentForm.valid">
+      Submit
+    </button>
+  </form>
+  

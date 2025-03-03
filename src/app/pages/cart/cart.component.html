@@ -1,0 +1,37 @@
+
+<div class="cart-header">
+  <a href="/shop" class="continue-shopping">
+    <span class="back-arrow">←</span> Continue Shopping
+  </a>
+</div>
+<div class="shopping-cart">
+  <h1>Shopping Cart</h1>
+  <ul *ngIf="cartItems.length > 0; else emptyCart">
+    <li *ngFor="let item of cartItems">
+      <div class="item-details">
+        <img [src]="item.imageUrl" alt="{{ item.name }}" width="100" height="100">
+        <div class="item-info">
+          <h2>{{ item.name }}</h2>
+          <p>Size: {{ item.size }}</p>
+        </div>
+        <div class="item-qty">
+          <button (click)="decreaseQuantity(item)">-</button>
+          <span>Quantity: {{ item.quantity }}</span>
+          <button (click)="increaseQuantity(item)">+</button>
+        </div>
+        <span>Price: ${{ item.price }}</span>
+      </div>
+      <div class="item-actions">
+        <button (click)="removeItem(item)">X</button>
+        <button (click)="saveForLater(item)">Save for later</button>
+      </div>
+    </li>
+  </ul>
+  <ng-template #emptyCart>
+    <p class="empty-cart-message">Your cart is currently empty. Start adding items to your cart!</p>
+  </ng-template>
+  <div class="subtotal" *ngIf="cartItems.length > 0">
+    <p>Subtotal: ${{ getSubtotal() }}</p>
+    <button (click)="checkout()">Checkout</button>
+  </div>
+</div>

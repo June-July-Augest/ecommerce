@@ -1,1 +1,12 @@
-<p>checkout works!</p>
+<div class="checkout-container">
+    <div class="left-panel">
+      <app-checkout-email></app-checkout-email>
+      <app-checkout-shipping></app-checkout-shipping>
+      <app-checkout-payment></app-checkout-payment>
+      <app-order-confirmation></app-order-confirmation>
+    </div>
+    <div class="right-panel">
+      <app-order-summary [cartItems]="cartItems"></app-order-summary>
+    </div>
+  </div>
+  

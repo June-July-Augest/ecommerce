@@ -1,0 +1,65 @@
+<form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="fullName">Full Name</label>
+    <input 
+      type="text" 
+      id="fullName" 
+      formControlName="fullName" 
+      class="form-control">
+    <div *ngIf="shippingForm.get('fullName')?.invalid && (shippingForm.get('fullName')?.dirty || shippingForm.get('fullName')?.touched)" class="error">
+      <div *ngIf="shippingForm.get('fullName')?.errors?.['required']">Full Name is required.</div>
+      <div *ngIf="shippingForm.get('fullName')?.errors?.['minlength']">Full Name must be at least 3 characters long.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input 
+      type="text" 
+      id="address" 
+      formControlName="address" 
+      class="form-control">
+    <div *ngIf="shippingForm.get('address')?.invalid && (shippingForm.get('address')?.dirty || shippingForm.get('address')?.touched)" class="error">
+      <div *ngIf="shippingForm.get('address')?.errors?.['required']">Address is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="city">City</label>
+    <input 
+      type="text" 
+      id="city" 
+      formControlName="city" 
+      class="form-control">
+    <div *ngIf="shippingForm.get('city')?.invalid && (shippingForm.get('city')?.dirty || shippingForm.get('city')?.touched)" class="error">
+      <div *ngIf="shippingForm.get('city')?.errors?.['required']">City is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="state">State</label>
+    <input 
+      type="text" 
+      id="state" 
+      formControlName="state" 
+      class="form-control">
+    <div *ngIf="shippingForm.get('state')?.invalid && (shippingForm.get('state')?.dirty || shippingForm.get('state')?.touched)" class="error">
+      <div *ngIf="shippingForm.get('state')?.errors?.['required']">State is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="zipCode">Zip Code</label>
+    <input 
+      type="text" 
+      id="zipCode" 
+      formControlName="zipCode" 
+      class="form-control">
+    <div *ngIf="shippingForm.get('zipCode')?.invalid && (shippingForm.get('zipCode')?.dirty || shippingForm.get('zipCode')?.touched)" class="error">
+      <div *ngIf="shippingForm.get('zipCode')?.errors?.['required']">Zip Code is required.</div>
+      <div *ngIf="shippingForm.get('zipCode')?.errors?.['pattern']">Zip Code is invalid.</div>
+    </div>
+  </div>
+  <button 
+    type="submit" 
+    class="btn btn-primary" 
+    [disabled]="!shippingForm.valid">
+    Submit
+  </button>
+</form>

@@ -1,0 +1,37 @@
+<form [formGroup]="paymentForm" (ngSubmit)="submitPayment()">
+    <div class="payment-options">
+      <label>
+        <input type="radio" name="payment" value="creditCard" [(ngModel)]="selectedPayment">
+        Credit/Debit Card
+      </label>
+      <label>
+        <input type="radio" name="payment" value="paypal" [(ngModel)]="selectedPayment">
+        PayPal
+      </label>
+      <label>
+        <input type="radio" name="payment" value="applePay" [(ngModel)]="selectedPayment">
+        Apple Pay / Google Pay
+      </label>
+      <label>
+        <input type="radio" name="payment" value="cod" [(ngModel)]="selectedPayment">
+        Cash on Delivery
+      </label>
+    </div>
+  
+    <div class="card-details" *ngIf="selectedPayment === 'creditCard'">
+      <label for="cardNumber">Card Number</label>
+      <input id="cardNumber" formControlName="cardNumber" type="text" placeholder="1234 5678 9012 3456">
+  
+      <label for="cardName">Name on Card</label>
+      <input id="cardName" formControlName="cardName" type="text" placeholder="John Doe">
+  
+      <label for="expiryDate">Expiry Date</label>
+      <input id="expiryDate" formControlName="expiryDate" type="text" placeholder="MM/YY">
+  
+      <label for="cvv">CVV</label>
+      <input id="cvv" formControlName="cvv" type="text" placeholder="123">
+    </div>
+  
+    <button type="submit" class="btn primary">Confirm Payment</button>
+  </form>
+  

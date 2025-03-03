@@ -1,0 +1,18 @@
+<div class="order-summary">
+    <h3>Order Summary</h3>
+    <ul>
+      <li *ngFor="let item of cartItems">
+        {{ item.name }} / {{ item.size }} - {{ item.quantity }} x {{ item.price }} = {{ item.quantity * item.price }}
+      </li>
+    </ul>
+    <div class="subtotal">
+      Subtotal: {{ getSubtotal() }}
+    </div>
+    <div class="tax">
+      Tax: {{ getTax() }}
+    </div>
+    <div class="total">
+      <strong>Total: {{ getTotal() + getTax() }}</strong>
+    </div>
+  </div>
+  
