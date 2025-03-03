@@ -5,11 +5,8 @@
       <app-info-card
         [isProfile]="true"
         title="My Profile"
-        [image]="profileInfo.profileImage"
-        [firstDisplay]="profileInfo.firstName"
-        [secondDisplay]="profileInfo.lastName"
-        [thirdDisplay]="profileInfo.email"
-        [forthDisplay]="profileInfo.phone"
+        [image]="profileInfo.profileImage!"
+        [formDisplay]="profileDisplay"
         (formData)="onSubmitProfile($event)"
         (imageUrl)="onSelectImage($event)"
       />
@@ -19,21 +16,13 @@
       <app-info-card
         [isProfile]="false"
         title="Shipping Address"
-        [image]="''"
-        [firstDisplay]="shippingAddress.street"
-        [secondDisplay]="shippingAddress.city"
-        [thirdDisplay]="shippingAddress.state"
-        [forthDisplay]="shippingAddress.zipcode"
+        [formDisplay]="shippingDisplay"
         (formData)="onSubmitAddress($event)"
       />
       <app-info-card
         [isProfile]="false"
         title="Payment Method"
-        [image]="''"
-        [firstDisplay]="paymentMethod.cardNumber"
-        [secondDisplay]="paymentMethod.exp"
-        [thirdDisplay]="paymentMethod.billingAddress!.slice(0, 25) + '...'"
-        [forthDisplay]="paymentMethod.secCode"
+        [formDisplay]="PaymentDisplay"
         (formData)="onSubmitPayment($event)"
       />
     </div>
@@ -50,6 +39,15 @@
       [thirdDisplay]="order.shippingAddress" 
       [forthDisplay]="order.trackingNumber"
       [orderId]="order.id"
+      [orderhistryData]="{
+        title: order.title,
+        image: order.productImage,
+        orderId:order.id,
+        firstDisplay:order.description,
+        secondDisplay:order.orderDate,
+        thirdDisplay: order.shippingAddress,
+        forthDisplay: order.trackingNumber
+      }"
     />
     }
   </div>

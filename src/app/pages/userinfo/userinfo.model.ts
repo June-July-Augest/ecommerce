@@ -36,3 +36,20 @@ export interface CardFormData{
     thirdData: string | null,
     forthData: string | null,
 }
+
+export interface FormDisplay{
+      firstDisplay : string | null,
+      secondDisplay : string | null,
+      thirdDisplay : string | null,
+      forthDisplay : string | null,
+}
+
+export interface OrderHistoryDisplay{
+    title:string | null,
+    image:string | null,
+    firstDisplay:string | null,
+    secondDisplay:string | null,
+    thirdDisplay:string | null,
+    forthDisplay:string | null,
+    orderId:string | null,
+}
