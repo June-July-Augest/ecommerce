@@ -1,6 +1,15 @@
-import { Component, ElementRef, input, OnChanges, OnInit, output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  input,
+  OnChanges,
+  OnInit,
+  output,
+  ViewChild,
+  Input,
+} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CardFormData } from '../userinfo.model';
+import { CardFormData, FormDisplay } from '../userinfo.model';
 
 @Component({
   selector: 'app-info-card',
@@ -9,25 +18,21 @@ import { CardFormData } from '../userinfo.model';
   styleUrl: './info-card.component.css',
 })
 export class InfoCardComponent implements OnChanges {
-  
-  isProfile = input.required<boolean>();
-  title = input.required<string | null>();
-  image = input.required<string | null | undefined>();
-  firstDisplay = input.required<string | null>();
-  secondDisplay = input.required<string | null>();
-  thirdDisplay = input.required<string | null>();
-  forthDisplay = input.required<string | null>();
+  @Input({ required: true }) isProfile?: boolean;
+  @Input({ required: true }) title?: string | null;
+  @Input() image?: string;
+  @Input({ required: true }) formDisplay?: FormDisplay;
 
-  @ViewChild('imageUploadInput') imageUploader!: ElementRef<HTMLInputElement>
-  @ViewChild('img') img!: ElementRef<HTMLImageElement>
+  @ViewChild('imageUploadInput') imageUploader!: ElementRef<HTMLInputElement>;
+  @ViewChild('img') img!: ElementRef<HTMLImageElement>;
 
   formData = output<CardFormData>();
-  imageUrl = output<string>()
+  imageUrl = output<string>();
 
   isEditing = false;
 
   ngOnChanges(): void {
-    this.resetForm()
+    this.resetForm();
   }
 
   form = new FormGroup({
@@ -37,11 +42,18 @@ export class InfoCardComponent implements OnChanges {
     forthLine: new FormControl({ value: '', disabled: !this.isEditing }),
   });
 
-  resetForm(){
-    this.form.get('firstLine')?.setValue(this.firstDisplay())
-    this.form.get('secondLine')?.setValue(this.secondDisplay())
-    this.form.get('thirdLine')?.setValue(this.thirdDisplay())
-    this.form.get('forthLine')?.setValue(this.forthDisplay())
+  resetForm() {
+    this.form.get('firstLine')?.setValue(this.formDisplay!.firstDisplay);
+    this.form.get('secondLine')?.setValue(this.formDisplay!.secondDisplay);
+    this.form.get('thirdLine')?.setValue(this.formDisplay!.thirdDisplay);
+    this.form.get('forthLine')?.setValue(this.formDisplay!.forthDisplay);
+  }
+
+  saveUserInput() {
+    this.formDisplay!.firstDisplay = this.form.controls.firstLine.value;
+    this.formDisplay!.secondDisplay = this.form.controls.secondLine.value;
+    this.formDisplay!.thirdDisplay = this.form.controls.thirdLine.value;
+    this.formDisplay!.forthDisplay = this.form.controls.forthLine.value;
   }
 
   toggleEditing() {
@@ -53,7 +65,7 @@ export class InfoCardComponent implements OnChanges {
   }
 
   triggerFileInput() {
-    this.imageUploader.nativeElement.click()
+    this.imageUploader.nativeElement.click();
   }
 
   onImageUpload(event: Event) {
@@ -61,11 +73,9 @@ export class InfoCardComponent implements OnChanges {
     if (inputEle.files && inputEle.files[0]) {
       const imageFile = inputEle.files[0];
       const link = URL.createObjectURL(imageFile);
-      this.imageUrl.emit(link)
-   }
-
+      this.imageUrl.emit(link);
+    }
   }
-
 
   onCancle() {
     this.toggleEditing();
@@ -74,21 +84,20 @@ export class InfoCardComponent implements OnChanges {
 
   onSubmit() {
     this.toggleEditing();
+    this.saveUserInput();
     this.formData.emit({
       firstData: this.form.controls.firstLine.value
         ? this.form.controls.firstLine.value
-        : this.firstDisplay(),
+        : this.formDisplay!.firstDisplay,
       secondData: this.form.controls.secondLine.value
         ? this.form.controls.secondLine.value
-        : this.secondDisplay(),
+        : this.formDisplay!.secondDisplay,
       thirdData: this.form.controls.thirdLine.value
         ? this.form.controls.thirdLine.value
-        : this.thirdDisplay(),
+        : this.formDisplay!.thirdDisplay,
       forthData: this.form.controls.forthLine.value
         ? this.form.controls.forthLine.value
-        : this.forthDisplay(),
+        : this.formDisplay!.forthDisplay,
     });
-
-    this.resetForm()
   }
 }

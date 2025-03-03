@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {
   CardFormData,
+  FormDisplay,
   Order,
-  //asdasdas
   PaymentMethod,
   ProfileInfo,
   ShippingAddress,
@@ -24,22 +24,34 @@ export class UserinfoComponent {
   paymentMethod: PaymentMethod = DUMMY_DATA.paymentMethod;
   orderHistory: Order[] = DUMMY_DATA.orderHistory;
 
-  paymentmethodData = {
-    first: this.paymentMethod.cardNumber,
-    second: this.paymentMethod.exp,
-    third: this.paymentMethod.billingAddress,
-    forth: this.paymentMethod.secCode,
+  profileDisplay: FormDisplay = {
+    firstDisplay: this.profileInfo.firstName,
+    secondDisplay: this.profileInfo.lastName,
+    thirdDisplay: this.profileInfo.email,
+    forthDisplay: this.profileInfo.phone
+  }
+  shippingDisplay: FormDisplay = {
+    firstDisplay: this.shippingAddress.street,
+    secondDisplay: this.shippingAddress.city,
+    thirdDisplay: this.shippingAddress.state,
+    forthDisplay: this.shippingAddress.zipcode
+  }
+  PaymentDisplay: FormDisplay = {
+    firstDisplay: this.paymentMethod.cardNumber,
+    secondDisplay: this.paymentMethod.exp,
+    thirdDisplay: this.paymentMethod.billingAddress,
+    forthDisplay: this.paymentMethod.secCode
   }
 
 
 
   onSelectImage(link: string) {
     // upload this image to data base generate url and pass it to info-card!!
-    console.log('old profile image URL')
+    // console.log('old profile image URL')
     console.log(this.profileInfo.profileImage)
     this.profileInfo.profileImage = link
-    console.log('updated profile image URL(Blob object)')
-    console.log(this.profileInfo.profileImage)
+    // console.log('updated profile image URL(Blob object)')
+    // console.log(this.profileInfo.profileImage)
   }
 
   onSubmitProfile(data: CardFormData) {
@@ -52,13 +64,13 @@ export class UserinfoComponent {
       email: data.thirdData,
       phone: data.forthData,
     };
-    console.log('data: ', data);
-    console.log('updated ProfileInfo: ', this.profileInfo);
+    // console.log('data recieved in parent: ', data);
+    console.log('updated ProfileInfo property: ', this.profileInfo);
   }
 
   onSubmitAddress(data: CardFormData) {
     // update database when done playing with dummy data
-    console.log('old ShippingAddress: ', this.shippingAddress);
+    // console.log('old ShippingAddress: ', this.shippingAddress);
     this.shippingAddress = {
       ...this.shippingAddress,
       street: data.firstData,
@@ -66,13 +78,13 @@ export class UserinfoComponent {
       state: data.thirdData,
       zipcode: data.forthData
     };
-    console.log('data: ', data);
-    console.log('updated ShippingAddress: ', this.shippingAddress);
+    // console.log('data recieved in parent: ', data);
+    // console.log('updated ShippingAddress: ', this.shippingAddress);
   }
 
   onSubmitPayment(data: CardFormData) {
     // update database when done playing with dummy data
-    console.log('old paymentMethod: ', this.paymentMethod);
+    // console.log('old paymentMethod: ', this.paymentMethod);
     this.paymentMethod = {
       ...this.paymentMethod,
       cardNumber: data.firstData,
@@ -80,7 +92,7 @@ export class UserinfoComponent {
       billingAddress: data.thirdData,
       secCode: data.forthData
     };
-    console.log('data: ',data);
-    console.log('updated paymentMethod: ', this.paymentMethod);
+    // console.log('data recieved in parent: ',data);
+    // console.log('updated paymentMethod: ', this.paymentMethod);
   }
 }

@@ -1,8 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
   
-  @if(isProfile()) {
-  <img [src]="image()" alt="head" (click)="triggerFileInput()" #img />
+  @if(isProfile) {
+  <img [src]="image" alt="head" (click)="triggerFileInput()" #img />
   }
   <input
     type="file"
@@ -15,12 +15,12 @@
 
 
   <div class="title">
-    <p>{{ title() }}</p>
-    @if(!isProfile()){ @if(!isEditing){
-    <button type="button" (click)="toggleEditing()">Edit</button>
+    <p class="titleText">{{ title }}</p>
+    @if(!isProfile){ @if(!isEditing){
+        <button type="button" (click)="toggleEditing()">Edit</button>
     }@else {
     <div class="two-button">
-      <button type="submit" class="confirm">Submit</button>
+      <button type="submit" class="confirm">Confirm</button>
       <button type="button" class="cancel" (click)="onCancle()">Cancel</button>
     </div>
     } }
@@ -49,7 +49,7 @@
       formControlName="forthLine"
     />
   </div>
-  @if(isProfile()){ @if(!isEditing){
+  @if(isProfile){ @if(!isEditing){
   <button type="button" class="big-button" (click)="toggleEditing()">
     Edit
   </button>

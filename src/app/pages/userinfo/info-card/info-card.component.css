@@ -27,15 +27,25 @@ img:hover{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0.5em 1em;
     font-size: 1em;
     font-weight: 700;
     margin-bottom: 2em;
 }
 
-title p{
+.title p{
     flex: 1;
+    transform: translateY(0.5em);
+
 }
+.two-button{
+    display: flex;
+    justify-content: end;
+    gap: 0.5em;
+    align-items: center;
+    width: 100%;
+    flex: 0.5;
+}
+
 
 .form-rows{
     display: flex;
@@ -61,11 +71,12 @@ input:focus{
 
 
 button{
-    padding: 0.5em 1.5em;
+    padding: 0.25em 0.75em;
     border: none;
     background-color: #884dee;
     color: white;
-    border-radius:1em ;
+    border-radius:0.5em ;
+    font-size: 12px;
 }
 
 button:hover{
@@ -78,14 +89,6 @@ button:hover{
     margin-top: 1em;
 }
 
-.two-button{
-    display: flex;
-    justify-content: end;
-    gap: 1em;
-    align-items: center;
-    width: 100%;
-    flex: 0.5;
-}
 
 .center{
     justify-content: center;
