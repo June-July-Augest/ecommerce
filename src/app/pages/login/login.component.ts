@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router'; // Import Router
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -12,10 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  errorMessage: string = ''; // Declare error message
-  successMessage: string = ''; // Declare success message
+  errorMessage: string = '';
+  successMessage: string = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
+    // Inject Router
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -25,12 +27,15 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log('Login successful:', this.loginForm.value);
-      this.errorMessage = ''; // Clear previous errors
-      this.successMessage = 'Login successful!'; // Show success message
+      this.errorMessage = '';
+      this.successMessage = 'Login successful!';
+
+      // Redirect to home page after login success
+      this.router.navigate(['/']);
     } else {
-      this.successMessage = ''; // Clear success message
-      this.errorMessage = 'Please enter a valid email and password.'; // Show error message
-      this.loginForm.markAllAsTouched(); // Highlight invalid fields
+      this.successMessage = '';
+      this.errorMessage = 'Please enter a valid email and password.';
+      this.loginForm.markAllAsTouched();
     }
   }
 }
