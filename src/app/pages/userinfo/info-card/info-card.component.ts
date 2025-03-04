@@ -1,18 +1,19 @@
 import {
   Component,
   ElementRef,
-  input,
   OnChanges,
-  OnInit,
-  output,
   ViewChild,
   Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
 } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CardFormData, FormDisplay } from '../userinfo.model';
 
 @Component({
   selector: 'app-info-card',
+  standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './info-card.component.html',
   styleUrl: './info-card.component.css',
@@ -22,46 +23,56 @@ export class InfoCardComponent implements OnChanges {
   @Input({ required: true }) title?: string | null;
   @Input() image?: string;
   @Input({ required: true }) formDisplay?: FormDisplay;
+  @Input({ required: true }) formValidator?: any;
 
   @ViewChild('imageUploadInput') imageUploader!: ElementRef<HTMLInputElement>;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
 
-  formData = output<CardFormData>();
-  imageUrl = output<string>();
+  @Output() formData = new EventEmitter<CardFormData>();
+  @Output() imageUrl = new EventEmitter<string>();
 
   isEditing = false;
+  form!: FormGroup;
 
-  ngOnChanges(): void {
-    this.resetForm();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['formValidator']) {
+      this.initializeForm();
+    }
   }
 
-  form = new FormGroup({
-    firstLine: new FormControl({ value: '', disabled: !this.isEditing }),
-    secondLine: new FormControl({ value: '', disabled: !this.isEditing }),
-    thirdLine: new FormControl({ value: '', disabled: !this.isEditing }),
-    forthLine: new FormControl({ value: '', disabled: !this.isEditing }),
-  });
-
-  resetForm() {
-    this.form.get('firstLine')?.setValue(this.formDisplay!.firstDisplay);
-    this.form.get('secondLine')?.setValue(this.formDisplay!.secondDisplay);
-    this.form.get('thirdLine')?.setValue(this.formDisplay!.thirdDisplay);
-    this.form.get('forthLine')?.setValue(this.formDisplay!.forthDisplay);
+  initializeForm() {
+    this.form = new FormGroup({
+      firstLine: new FormControl(
+        { value: this.formDisplay?.firstDisplay || '', disabled: !this.isEditing },
+        this.formValidator?.firstField?.validators || []
+      ),
+      secondLine: new FormControl(
+        { value: this.formDisplay?.secondDisplay || '', disabled: !this.isEditing },
+        this.formValidator?.secondtField?.validators || []
+      ),
+      thirdLine: new FormControl(
+        { value: this.formDisplay?.thirdDisplay || '', disabled: !this.isEditing },
+        this.formValidator?.thirdField?.validators || []
+      ),
+      forthLine: new FormControl(
+        { value: this.formDisplay?.forthDisplay || '', disabled: !this.isEditing },
+        this.formValidator?.forthField?.validators || []
+      ),
+    });
   }
 
   saveUserInput() {
-    this.formDisplay!.firstDisplay = this.form.controls.firstLine.value;
-    this.formDisplay!.secondDisplay = this.form.controls.secondLine.value;
-    this.formDisplay!.thirdDisplay = this.form.controls.thirdLine.value;
-    this.formDisplay!.forthDisplay = this.form.controls.forthLine.value;
+    if (!this.formDisplay) return;
+    this.formDisplay.firstDisplay = this.form.controls['firstLine'].value;
+    this.formDisplay.secondDisplay = this.form.controls['secondLine'].value;
+    this.formDisplay.thirdDisplay = this.form.controls['thirdLine'].value;
+    this.formDisplay.forthDisplay = this.form.controls['forthLine'].value;
   }
 
   toggleEditing() {
     this.isEditing = !this.isEditing;
     const action = this.isEditing ? 'enable' : 'disable';
-    for (const control of Object.values(this.form.controls)) {
-      control[action]();
-    }
+    Object.values(this.form.controls).forEach(control => control[action]());
   }
 
   triggerFileInput() {
@@ -77,27 +88,23 @@ export class InfoCardComponent implements OnChanges {
     }
   }
 
-  onCancle() {
+  onCancel() {
     this.toggleEditing();
-    this.resetForm();
+    this.initializeForm();
   }
 
   onSubmit() {
+    console.log(this.form.invalid)
+    if(this.form.invalid) return
+    // console.log(this.form.controls['firstLine'].invalid)
+    // console.log(this.form.controls['secondLine'].invalid)
     this.toggleEditing();
     this.saveUserInput();
     this.formData.emit({
-      firstData: this.form.controls.firstLine.value
-        ? this.form.controls.firstLine.value
-        : this.formDisplay!.firstDisplay,
-      secondData: this.form.controls.secondLine.value
-        ? this.form.controls.secondLine.value
-        : this.formDisplay!.secondDisplay,
-      thirdData: this.form.controls.thirdLine.value
-        ? this.form.controls.thirdLine.value
-        : this.formDisplay!.thirdDisplay,
-      forthData: this.form.controls.forthLine.value
-        ? this.form.controls.forthLine.value
-        : this.formDisplay!.forthDisplay,
+      firstData: this.form.controls['firstLine'].value || this.formDisplay!.firstDisplay,
+      secondData: this.form.controls['secondLine'].value || this.formDisplay!.secondDisplay,
+      thirdData: this.form.controls['thirdLine'].value || this.formDisplay!.thirdDisplay,
+      forthData: this.form.controls['forthLine'].value || this.formDisplay!.forthDisplay,
     });
   }
 }

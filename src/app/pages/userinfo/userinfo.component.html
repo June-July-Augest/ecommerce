@@ -8,7 +8,8 @@
         [image]="profileInfo.profileImage!"
         [formDisplay]="profileDisplay"
         (formData)="onSubmitProfile($event)"
-        (imageUrl)="onSelectImage($event)"
+        (imageUrl)="onSelectImage($event)" 
+        [formValidator] = 'profileFormValidation'
       />
     </div>
 
@@ -17,13 +18,15 @@
         [isProfile]="false"
         title="Shipping Address"
         [formDisplay]="shippingDisplay"
-        (formData)="onSubmitAddress($event)"
+        (formData)="onSubmitAddress($event)" 
+        [formValidator] = 'shippingFormValidation'
       />
       <app-info-card
         [isProfile]="false"
         title="Payment Method"
         [formDisplay]="PaymentDisplay"
-        (formData)="onSubmitPayment($event)"
+        (formData)="onSubmitPayment($event)"  
+        [formValidator] = 'paymentFormValidation'
       />
     </div>
   </div>
