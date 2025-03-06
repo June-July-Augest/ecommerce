@@ -8,12 +8,10 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, HeroComponent, NewArrivalsComponent, FooterComponent, NavbarComponent],
+  imports: [CommonModule, HeroComponent, NewArrivalsComponent],
   template: `
-    <app-navbar></app-navbar> <!-- Added nav-bar here -->
     <app-hero></app-hero>
     <app-new-arrivals></app-new-arrivals>
-    <app-footer></app-footer>
   `,
   styleUrls: ['./main.component.scss'],
 })

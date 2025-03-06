@@ -1,4 +1,4 @@
-<div class="chart-container">
+<div class="chart-container" *ngIf="isBrowser">
     <canvas baseChart
             [data]="chartData"
             [labels]="chartLabels"
