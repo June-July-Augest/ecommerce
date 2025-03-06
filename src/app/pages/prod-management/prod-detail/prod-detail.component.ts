@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NavBarSellerComponent } from '../nav-bar-seller/nav-bar-seller.component';
 
 @Component({
   selector: 'app-prod-detail',
-  imports: [CommonModule, FormsModule, NavBarSellerComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './prod-detail.component.html',
   styleUrl: './prod-detail.component.scss'
 })

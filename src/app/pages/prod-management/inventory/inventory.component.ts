@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavBarSellerComponent } from '../nav-bar-seller/nav-bar-seller.component';
 import { InventoryActionBlockComponent } from '../inventory-action-block/inventory-action-block.component';
 import { GenericTableComponent } from '../generic-table/generic-table.component';
 
 @Component({
   selector: 'app-inventory',
-  imports: [NavBarSellerComponent, InventoryActionBlockComponent, GenericTableComponent],
+  imports: [InventoryActionBlockComponent, GenericTableComponent],
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.scss'
 })

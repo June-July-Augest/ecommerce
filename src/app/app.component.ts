@@ -7,12 +7,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: `
-    <!-- <app-navbar></app-navbar> -->
-
-    <!-- Anything routed (MainComponent, CategoryComponent) goes here -->
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {}
