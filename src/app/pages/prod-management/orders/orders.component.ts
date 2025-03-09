@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavBarSellerComponent } from '../nav-bar-seller/nav-bar-seller.component';
 import { GenericTableComponent } from '../generic-table/generic-table.component';
 
 @Component({
   selector: 'app-orders',
-  imports: [NavBarSellerComponent, GenericTableComponent],
+  imports: [GenericTableComponent],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })

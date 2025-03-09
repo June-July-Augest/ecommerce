@@ -1,0 +1,72 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  
+  @if(isProfile) {
+  <img [src]="image" alt="head" (click)="triggerFileInput()" #img />
+  }
+  <input
+    type="file"
+    accept="image/*"
+    #fileInput
+    style="display: none"
+    (change)="onImageUpload($event)"
+    #imageUploadInput
+  />
+
+
+  <div class="title">
+    <p class="titleText">{{ title }}</p>
+    @if(!isProfile){ @if(!isEditing){
+        <button type="button" (click)="toggleEditing()">Edit</button>
+    }@else {
+    <div class="two-button">
+      <button type="submit" class="confirm" [disabled]="form.invalid">Confirm</button>
+      <button type="button" class="cancel" (click)="onCancel()">Cancel</button>
+    </div>
+    } }
+  </div>
+  <div class="form-rows">
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'" 
+      [class]="form.controls['firstLine'].invalid ? 'invalid' : ''"
+      formControlName="firstLine"
+    />
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
+      [class]="form.controls['secondLine'].invalid ? 'invalid' : ''"
+      formControlName="secondLine"
+    />
+  </div>
+  <div class="form-rows">
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
+      [class]="form.controls['thirdLine'].invalid ? 'invalid' : ''"
+      formControlName="thirdLine"
+    />
+    <input
+      type="text"
+      [style.backgroundColor]="isEditing ? '#ece2fe' : '#d8c4fa'"
+      [class]="form.controls['forthLine'].invalid ? 'invalid' : ''"
+      formControlName="forthLine"
+    />
+  </div>
+  @if(form.invalid){
+    <p class="error">Please enter valid info</p>
+
+  }
+  @if(isProfile){ @if(!isEditing){
+  <button type="button" class="big-button" (click)="toggleEditing()">
+    Edit
+  </button>
+  } @else {
+  <div class="two-button center">
+    <button type="submit" [disabled]="form.invalid" class="big-button confirm">Submit</button>
+    <button type="button" class="big-button cancel" (click)="onCancel()">
+      Cancel
+    </button>
+  </div>
+  } }
+</form>

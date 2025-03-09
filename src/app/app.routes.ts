@@ -10,13 +10,24 @@ import { InventoryComponent } from './pages/prod-management/inventory/inventory.
 import { OrdersComponent } from './pages/prod-management/orders/orders.component';
 import { ProdDetailComponent } from './pages/prod-management/prod-detail/prod-detail.component';
 import { CategoryComponent } from './components/category/category.component';
-import { MaterialLayoutComponent } from './angular-material/material-layout/material-layout.component';
-
+import { SellerLayoutComponent } from './layouts/seller-layout/seller-layout.component';
+import { BuyerLayoutComponent } from './layouts/buyer-layout/buyer-layout.component';
 export const routes: Routes = [
   {
-    path: 'seller', 
-    component: MaterialLayoutComponent,
+    path: '',
+    component: BuyerLayoutComponent,
     children: [
+      { path: '', component: MainComponent },
+      { path: 'userinfo', component: UserinfoComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'category/:category', component: CategoryComponent },
+    ]
+  },
+  {
+    path: 'seller', 
+    component: SellerLayoutComponent,
+    children: [
+      { path: '', redirectTo:'dashboard', pathMatch:'full'},
       { path: 'dashboard', component: DashboardComponent },
       { path: 'listing', component: ListingComponent },
       { path: 'inventory', component: InventoryComponent },
@@ -24,11 +35,7 @@ export const routes: Routes = [
       { path: 'listing/productDetail', component: ProdDetailComponent },
     ]
   },
-  { path: '', component: MainComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'userinfo', component: UserinfoComponent },
-  { path: ':category', component: CategoryComponent },
   /* { path: '**', redirectTo: '', pathMatch: 'full' }, */
 ];
 

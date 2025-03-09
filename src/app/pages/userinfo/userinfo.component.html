@@ -1,1 +1,57 @@
-<p>userinfo works!</p>
+<div class="userinfo">
+  <h2>Welcome back, {{ profileInfo.firstName }}</h2>
+  <div class="profile">
+    <div class="personal-info">
+      <app-info-card
+        [isProfile]="true"
+        title="My Profile"
+        [image]="profileInfo.profileImage!"
+        [formDisplay]="profileDisplay"
+        (formData)="onSubmitProfile($event)"
+        (imageUrl)="onSelectImage($event)" 
+        [formValidator] = 'profileFormValidation'
+      />
+    </div>
+
+    <div class="shipping-payment">
+      <app-info-card
+        [isProfile]="false"
+        title="Shipping Address"
+        [formDisplay]="shippingDisplay"
+        (formData)="onSubmitAddress($event)" 
+        [formValidator] = 'shippingFormValidation'
+      />
+      <app-info-card
+        [isProfile]="false"
+        title="Payment Method"
+        [formDisplay]="PaymentDisplay"
+        (formData)="onSubmitPayment($event)"  
+        [formValidator] = 'paymentFormValidation'
+      />
+    </div>
+  </div>
+
+  <h2>Order History</h2>
+  <div class="ordered-items">
+    @for (order of orderHistory; track order.id) {
+    <app-order-card
+      [title]="order.title"
+      [image]="order.productImage"
+      [firstDisplay]="order.description"
+      [secondDisplay]="order.orderDate" 
+      [thirdDisplay]="order.shippingAddress" 
+      [forthDisplay]="order.trackingNumber"
+      [orderId]="order.id"
+      [orderhistryData]="{
+        title: order.title,
+        image: order.productImage,
+        orderId:order.id,
+        firstDisplay:order.description,
+        secondDisplay:order.orderDate,
+        thirdDisplay: order.shippingAddress,
+        forthDisplay: order.trackingNumber
+      }"
+    />
+    }
+  </div>
+</div>

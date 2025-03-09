@@ -1,0 +1,16 @@
+<div class="order-history">
+  <img
+    [src]="orderhistryData.image"
+    alt="product"
+  />
+  <div class="item-info">
+    <div class="title">
+      <p>{{orderhistryData.title}}</p>
+      <button (click)="onReview()">Review</button>
+    </div>
+    <p><strong>Description:</strong> {{orderhistryData.firstDisplay}}</p>
+    <p><strong>Order Date:</strong> {{orderhistryData.secondDisplay}}</p>
+    <p><strong>Shipping Address:</strong> {{orderhistryData.thirdDisplay}}</p>
+    <p><strong>Tracking Number:</strong> {{orderhistryData.forthDisplay}}</p>
+  </div>
+</div>

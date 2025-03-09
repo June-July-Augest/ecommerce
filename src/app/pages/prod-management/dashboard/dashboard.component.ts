@@ -1,12 +1,11 @@
 import { Component, NgModule, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavBarSellerComponent } from '../nav-bar-seller/nav-bar-seller.component';
 import { DashboardInfoBlockComponent } from '../dashboard-info-block/dashboard-info-block.component';
 import { ProdChartComponent } from '../prod-chart/prod-chart.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [NavBarSellerComponent, DashboardInfoBlockComponent, CommonModule, ProdChartComponent],
+  imports: [DashboardInfoBlockComponent, CommonModule, ProdChartComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   encapsulation: ViewEncapsulation.Emulated
