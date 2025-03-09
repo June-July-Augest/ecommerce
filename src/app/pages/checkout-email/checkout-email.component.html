@@ -1,0 +1,12 @@
+<div class="checkout-section">
+    <h3>Your Email</h3>
+    <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email">
+        <small>You'll receive receipts and notifications at this email</small>
+      </div>
+      <button type="submit">Continue</button>
+    </form>
+  </div>
+  

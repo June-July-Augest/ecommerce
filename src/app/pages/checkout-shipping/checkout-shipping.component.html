@@ -1,0 +1,23 @@
+<div class="checkout-section">
+    <h3>Shipping Address</h3>
+    <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name">
+      </div>
+      <div>
+        <label for="address">Address:</label>
+        <input id="address" formControlName="address">
+      </div>
+      <div>
+        <label for="city">City:</label>
+        <input id="city" formControlName="city">
+      </div>
+      <div>
+        <label for="postalCode">Postal Code:</label>
+        <input id="postalCode" formControlName="postalCode">
+      </div>
+      <button type="submit">Continue</button>
+    </form>
+  </div>
+  

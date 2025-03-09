@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { CartService } from '../../services/cart.service';
+
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
+  standalone: false,
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {}
+export class NavbarComponent implements OnInit {
+  cartItemCount$!: number;
+
+  constructor(@Inject(CartService) private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartService.getTotalItemCount().subscribe(count => {
+      this.cartItemCount$ = count;
+      console.log('Cart Item Count:', this.cartItemCount$);
+      
+    });
+  }
+}

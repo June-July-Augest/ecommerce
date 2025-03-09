@@ -1,0 +1,145 @@
+.continue-shopping {
+  color: black;
+  display: flex;
+  font-size: 1em;
+  justify-content: left;
+  margin: 20px 0 0 20px;
+  text-decoration: none;
+ 
+}
+
+.back-arrow {
+  margin-right: 5px;
+}
+
+.shopping-cart {
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      padding: 20px 0;
+
+    }
+  }
+
+  .item-details {
+    display: flex;
+
+    img {
+      width: 150px;
+      height: 200px;
+      margin-right: 20px;
+    }
+
+    .item-info {
+      h2 {
+        margin: 0 0 10px 0;
+        font-size: 1.5em;
+        color: #333;
+      }
+
+      p {
+        margin: 0;
+        color: #777;
+      }
+    }
+  }
+
+  .item-qty {
+    display: flex;
+    position:relative;
+    align-items: center;
+
+    button {
+      background-color: #f0f0f0;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+
+    span {
+      margin: 0 10px;
+      color: #333;
+    }
+  }
+
+  .item-actions {
+    display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: space-between;
+
+    button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    margin: 10px 0; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+
+    .save-for-later {
+      margin-top: 10px;
+      text-decoration: none;
+      color: #800080; 
+    }
+  }
+
+  .empty-cart-message {
+    text-align: center;
+    color: #777;
+    font-size: 1.2em;
+  }
+
+  .subtotal {
+    text-align: right;
+    padding: 20px 0;
+    font-size: 1.5em;
+    color: #333;
+
+    // p {
+      
+    // }
+
+    button {
+      background-color: #800080;
+      width: 220px;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #007ba7;
+      }
+    }
+  }
+}
